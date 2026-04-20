@@ -1,0 +1,152 @@
+---
+const { skills } = Astro.props;
+
+// Helper to define node visuals based on category key
+function getNodeVisuals(category) {
+    if(category === "languages") return { class: "type-systems", icon: "[ Syntax ]" };
+    if(category === "databases") return { class: "type-network", icon: "[ Storage ]" };
+    if(category === "tools") return { class: "type-web", icon: "[ Binaries ]" };
+    return { class: "type-misc", icon: "[ Domains ]" };
+}
+---
+<section id="zone-skills" class="zone">
+    <div class="zone-title">
+        <span>> map_capabilities --format=tree</span>
+        <span style="color: var(--accent-purple)">[MAPPED]</span>
+    </div>
+    
+    <div class="topology-grid">
+        <div class="node-container">
+            <div class="node root active">
+                <span class="node-icon">[ Core Engine ]</span>
+                <div class="node-name">System Capabilities</div>
+            </div>
+        </div>
+        <div class="topology-layer">
+            {Object.entries(skills).map(([category, items]) => {
+                const visuals = getNodeVisuals(category);
+                const title = category.charAt(0).toUpperCase() + category.slice(1);
+                
+                return (
+                    <div class="node-container">
+                        <div class={`node ${visuals.class}`}>
+                            <span class="node-icon">{visuals.icon}</span>
+                            <div class="node-name">{title}</div>
+                        </div>
+                        <div class="payload">
+                            <div class="payload-header">== Modules Loaded ==</div>
+                            <ul class="payload-list">
+                                {items.map(item => <li>{item}</li>)}
+                            </ul>
+                        </div>
+                    </div>
+                )
+            })}
+        </div>
+    </div>
+</section>
+
+<style>
+    .topology-grid {
+        display: flex;
+        flex-direction: column;
+        gap: 3rem;
+        align-items: center;
+        position: relative;
+        margin-top: 2rem;
+    }
+    .topology-grid::before {
+        content: '';
+        position: absolute;
+        top: 50px;
+        bottom: 20%; 
+        left: 50%;
+        width: 2px;
+        background: var(--line-color);
+        z-index: 0;
+    }
+    .topology-layer {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 2rem 6rem;
+        position: relative;
+        justify-content: center;
+        width: 100%;
+        max-width: 900px;
+    }
+    .node-container {
+        position: relative;
+        z-index: 10;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+        margin-bottom: 1rem;
+    }
+    .topology-layer .node-container:nth-child(odd)::before {
+        content: '';
+        position: absolute;
+        top: 2rem; right: -3rem; width: 3rem; height: 2px;
+        background: var(--line-color); z-index: -1;
+    }
+    .topology-layer .node-container:nth-child(even)::before {
+        content: '';
+        position: absolute;
+        top: 2rem; left: -3rem; width: 3rem; height: 2px;
+        background: var(--line-color); z-index: -1;
+    }
+
+    .node {
+        background: var(--surface);
+        border: 1px solid var(--line-color);
+        padding: 1rem;
+        border-radius: 4px;
+        cursor: default;
+        position: relative;
+        width: 100%;
+        box-shadow: 0 10px 20px rgba(0,0,0,0.5);
+        transition: all 0.3s;
+    }
+    .node.root { border-top: 3px solid var(--text-main); border-radius: 50px; text-align: center; width: auto; padding: 1rem 2rem;}
+    .node.type-systems { border-top: 3px solid var(--accent-purple); }
+    .node.type-network { border-top: 3px solid var(--accent-blue); }
+    .node.type-web { border-top: 3px solid var(--accent-yellow); }
+    .node.type-misc { border-top: 3px solid var(--accent-green); }
+
+    .node-icon { font-size: 0.75rem; color: var(--text-muted); margin-bottom: 0.5rem; display: block; }
+    .node-name { font-weight: bold; font-size: 1rem; color: var(--text-main); margin-bottom: 0.5rem;}
+    
+    .node-container:hover .node { border-color: var(--text-muted); transform: translateY(-2px); }
+
+    .payload {
+        background: rgba(0,0,0,0.8);
+        border: 1px solid var(--line-color);
+        border-top: none;
+        width: 100%;
+        font-size: 0.9rem;
+        border-bottom-left-radius: 4px;
+        border-bottom-right-radius: 4px;
+        padding: 1.5rem;
+        margin-top: -4px;
+        transition: border-color 0.3s;
+    }
+    .node-container:hover .payload { border-color: var(--text-muted); }
+    
+    .payload-header {
+        color: var(--accent-red);
+        font-size: 0.7rem;
+        margin-bottom: 1rem;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        border-bottom: 1px dashed var(--line-color);
+        padding-bottom: 0.5rem;
+    }
+    .payload-list { display: flex; flex-wrap: wrap; gap: 10px; list-style: none; }
+    .payload-list li { background: var(--line-color); padding: 4px 10px; border-radius: 4px; color: var(--text-main); }
+
+    @media (max-width: 768px) {
+        .topology-layer { grid-template-columns: 1fr; gap: 2rem; }
+        .topology-layer .node-container::before { display: none; }
+        .topology-grid::before { bottom: calc(100% - 100px); }
+    }
+</style>

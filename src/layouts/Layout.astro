@@ -1,0 +1,91 @@
+---
+---
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pushkar G R | Systems Engineer</title>
+</head>
+<body>
+    <slot />
+</body>
+</html>
+
+<style is:global>
+    @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&display=swap');
+    
+    :root {
+        --bg-deep: #05050A;
+        --surface: #0D0F16;
+        --text-main: #E2E8F0;
+        --text-muted: #64748B;
+        --line-color: #1E293B;
+        --accent-green: #00FF66;
+        --accent-blue: #00E5FF;
+        --accent-red: #FF0055;
+        --accent-purple: #B300FF;
+        --accent-yellow: #F1FA8C;
+    }
+    
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    
+    body {
+        background-color: var(--bg-deep);
+        color: var(--text-main);
+        font-family: 'JetBrains Mono', monospace;
+        display: flex;
+        min-height: 100vh;
+        overflow-x: hidden;
+        background-image: 
+            radial-gradient(circle at 10% 10%, rgba(0, 229, 255, 0.03) 0%, transparent 40%),
+            radial-gradient(circle at 90% 90%, rgba(0, 255, 102, 0.03) 0%, transparent 40%);
+    }
+
+    main {
+        margin-left: 300px;
+        padding: 3rem;
+        width: 100%;
+        min-height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: flex-start;
+        padding-top: 5rem;
+    }
+
+    @media (max-width: 900px) {
+        body { flex-direction: column; }
+        main { margin-left: 0; padding: 2rem 1rem; align-items: flex-start; padding-top: 2rem;}
+    }
+
+    .zone { display: none; width: 100%; max-width: 1000px; animation: bootUp 0.3s ease-out forwards; }
+    .zone.active { display: block; }
+
+    @keyframes bootUp {
+        from { opacity: 0; transform: translateY(10px); filter: blur(2px); }
+        to { opacity: 1; transform: translateY(0); filter: blur(0); }
+    }
+
+    .zone-title {
+        color: var(--text-muted);
+        margin-bottom: 3rem;
+        font-size: 1.1rem;
+        border-bottom: 1px solid var(--line-color);
+        padding-bottom: 0.5rem;
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .btn-link {
+        display: inline-block;
+        color: var(--bg-deep);
+        background: var(--accent-blue);
+        text-decoration: none;
+        padding: 0.4rem 0.8rem;
+        border-radius: 2px;
+        font-size: 0.8rem;
+        font-weight: bold;
+        margin-top: 1rem;
+    }
+    .btn-link:hover { opacity: 0.8; }
+</style>

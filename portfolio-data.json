@@ -1,0 +1,111 @@
+{
+  "user": {
+    "name": "Pushkar G R",
+    "instance_id": "usr-pushkar-01",
+    "architecture": "Systems & Infrastructure",
+    "protocols": [
+      "eBPF",
+      "Rust",
+      "Go",
+      "TCP/IP"
+    ],
+    "bio": "I build high-performance, low-level network infrastructure and distributed systems. From writing eBPF/XDP hooks in the kernel to engineering peer-to-peer transport protocols in Rust, my focus is on absolute zero-copy efficiency and secure, scalable telemetry.",
+    "contact": {
+      "email": "gr.pushkar.7@gmail.com",
+      "github_url": "https://github.com/pushkar-gr",
+      "linkedin_url": "https://linkedin.com/in/gr-pushkar",
+      "twitter_url": "https://x.com/g_r_pushkar",
+      "resume_url": "https://drive.google.com/drive/folders/1opmJsLsklISI6FEOZ8KQoS8r4pfuXDFS?usp=sharing"
+    }
+  },
+  "experience": [
+    {
+      "name": "TruckHai",
+      "description": "Backend Developer Intern",
+      "period": "Jan 2026 - April 2026",
+      "responsibilities": ""
+    },
+    {
+      "name": "G5 Info Tech",
+      "description": "SRE/DevOps Intern",
+      "period": "March 2025 - August 2025",
+      "responsibilities": ""
+    }
+  ],
+  "skills": {
+    "languages": [
+      "C/C++", "Rust", "Go", "Java", "Python", "JavaScript", "Lua", "SQL"
+    ],
+    "databases": [
+      "PostgreSQL", "MySQL", "Redis", "MongoDB"
+    ],
+    "tools": [
+      "Linux/Unix", "Git", "Vim/Neovim", "Docker", "gRPC", "Matlab", "eBPF"
+    ],
+    "areas": [
+      "Network Programming", "Distributed Systems", "System Design", "Concurrency", "Performance Optimization", "Browser Extensions", "Full Stack Development"
+    ]
+  },
+  "projects": [
+    {
+      "name": "Aegis - Zero-Trust Network Controller",
+      "description": "High-performance distributed firewall leveraging eBPF/XDP for kernel-level packet filtering. Implemented LRU eviction for concurrent sessions and reduced map write contention by 90% via lazy timestamping.",
+      "html_url": "https://github.com/pushkar-gr/Aegis",
+      "technologies": ["Rust", "Go", "eBPF (XDP)", "gRPC", "Docker", "libbpf-rs"]
+    },
+    {
+      "name": "GhostLink - Serverless P2P Chat",
+      "description": "Decentralized chat application using a custom reliable-UDP transport layer (KCP). Features NAT hole-punching via STUN, end-to-end encryption using ChaCha20-Poly1305, and strictly peer-to-peer architecture.",
+      "html_url": "https://github.com/pushkar-gr/GhostLink",
+      "technologies": ["Rust", "UDP/KCP", "Cryptography", "STUN", "Tokio"]
+    },
+    {
+      "name": "Deston - Rust Load Balancer",
+      "description": "High-performance HTTP load balancer with dynamic routing, built-in health monitoring, and fault tolerance capabilities. Features include connection pooling, and configurable retry policies for enhanced reliability in distributed environments.",
+      "html_url": "https://github.com/pushkar-gr/Deston",
+      "technologies": ["Rust", "Tokio", "Network Programming"]
+    },
+    {
+      "name": "MotteSeed - BitTorrent Client",
+      "description": "Feature-complete BitTorrent client implementing the BitTorrent protocol with optimized peer communication, efficient disk I/O, and bandwidth management. Includes support for DHT, peer exchange, magnet links, and encryption for secure P2P file transfers.",
+      "html_url": "https://github.com/pushkar-gr/motteseed",
+      "technologies": ["Rust", "Async I/O", "P2P Networks"]
+    },
+    {
+      "name": "TurboTFTP - TFTP Implementation",
+      "description": "RFC 1350-compliant Trivial File Transfer Protocol (TFTP) implementation. Features non-blocking I/O, efficient block management, customizable timeouts, and robust error handling for reliable file transfers.",
+      "html_url": "https://github.com/pushkar-gr/turbotftp",
+      "technologies": ["C++", "Socket Programming", "Protocol Design"]
+    },
+    {
+      "name": "NaviDir - Terminal File Manager",
+      "description": "Lightweight terminal-based file manager. Use keyboard to navigate with vim-like bindings. Designed to be fast and lightweight for efficient file system exploration.",
+      "html_url": "https://github.com/pushkar-gr/NaviDir",
+      "technologies": ["C++", "POSIX", "Terminal UI"]
+    },
+    {
+      "name": "ByeByeMouse - Keyboard-First Navigation",
+      "description": "Firefox extension that transforms web browsing through comprehensive keyboard control, eliminating mouse dependency. Features link highlighting, vim-inspired command modes, and DOM traversal algorithms for seamless navigation.",
+      "html_url": "https://github.com/pushkar-gr/byebyemouse",
+      "technologies": ["JavaScript", "Firefox WebExtensions API", "DOM Manipulation"]
+    },
+    {
+      "name": "QuestionScraper - Competitive Programming Tool",
+      "description": "Go-based concurrent scraper for extracting programming problems from major competitive platforms. Implements rate-limiting, anti-detection mechanisms, and structured data extraction for creating comprehensive offline practice datasets with categorization.",
+      "html_url": "https://github.com/pushkar-gr/QuestionScraper",
+      "technologies": ["Go", "Web Scraping", "Concurrency", "PostgreSQL"]
+    },
+    {
+      "name": "CopyCode - Browser Extension",
+      "description": "Firefox extension that streamlined code copying functionality.",
+      "html_url": "https://github.com/pushkar-gr/copy-code",
+      "technologies": ["JavaScript", "Browser Extension", "DOM Manipulation"]
+    },
+    {
+      "name": "HumanBenchmark - Cognitive Assessment Platform",
+      "description": "Full-stack web application for measuring cognitive abilities and reaction times. Implements real-time performance tracking, statistical analysis of user metrics, responsive design, and algorithm-based challenge generation for comprehensive skill assessment.",
+      "html_url": "https://github.com/pushkar-gr/human-benchmark",
+      "technologies": ["JavaScript", "React", "CSS", "Backend APIs"]
+    }
+  ]
+}

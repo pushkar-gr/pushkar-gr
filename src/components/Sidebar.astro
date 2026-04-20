@@ -1,0 +1,118 @@
+---
+---
+<nav class="routing-table">
+    <div class="table-header">
+        Kernel IP routing table<br>
+        <span>Destination&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Gateway&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Iface</span>
+    </div>
+    
+    <div class="route-item active" data-target="zone-about">
+        <span class="route-ip">127.0.0.1</span>
+        <span class="route-iface">lo0::about</span>
+    </div>
+
+    <div class="route-item" data-target="zone-experience">
+        <span class="route-ip">10.0.1.0/24</span>
+        <span class="route-iface">eth1::daemons</span>
+    </div>
+
+    <div class="route-item" data-target="zone-skills">
+        <span class="route-ip">192.168.1.1</span>
+        <span class="route-iface">wlan0::topology</span>
+    </div>
+    
+    <div class="route-item" data-target="zone-projects">
+        <span class="route-ip">10.0.0.0/16</span>
+        <span class="route-iface">vpc-projects</span>
+    </div>
+    
+    <div class="route-item" data-target="zone-contact">
+        <span class="route-ip">0.0.0.0/0</span>
+        <span class="route-iface">eth0::egress</span>
+    </div>
+</nav>
+
+<style>
+    nav.routing-table {
+        width: 300px;
+        border-right: 1px solid var(--line-color);
+        background: rgba(5, 5, 10, 0.95);
+        padding: 2rem;
+        position: fixed;
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem;
+        z-index: 100;
+        backdrop-filter: blur(5px);
+    }
+
+    .table-header {
+        color: var(--text-muted);
+        font-size: 0.8rem;
+        border-bottom: 1px dashed var(--line-color);
+        padding-bottom: 0.5rem;
+        margin-bottom: 1rem;
+    }
+    .table-header span { color: var(--accent-blue); font-weight: bold; }
+
+    .route-item {
+        cursor: pointer;
+        color: var(--text-muted);
+        font-size: 0.9rem;
+        transition: all 0.3s;
+        display: grid;
+        grid-template-columns: 90px 1fr;
+        gap: 10px;
+        align-items: center;
+        position: relative;
+    }
+
+    .route-ip { color: var(--text-muted); opacity: 0.7; }
+    .route-iface { color: var(--text-main); }
+
+    .route-item:hover .route-iface { color: var(--accent-blue); }
+    .route-item.active .route-iface { color: var(--accent-green); font-weight: bold; }
+    .route-item.active .route-ip { color: var(--accent-green); opacity: 1; }
+    .route-item.active::before {
+        content: '>';
+        position: absolute;
+        left: -1rem;
+        color: var(--accent-green);
+    }
+
+    @media (max-width: 900px) {
+        nav.routing-table {
+            width: 100%;
+            height: auto;
+            position: relative;
+            border-right: none;
+            border-bottom: 1px solid var(--line-color);
+        }
+    }
+</style>
+
+<script>
+    // Component script for handling clicks
+    document.querySelectorAll('.route-item').forEach(item => {
+        item.addEventListener('click', (e) => {
+            const element = e.currentTarget;
+            const zoneId = element.getAttribute('data-target');
+            
+            // Update active state in sidebar
+            document.querySelectorAll('.route-item').forEach(i => i.classList.remove('active'));
+            element.classList.add('active');
+            
+            // Switch zones
+            document.querySelectorAll('.zone').forEach(zone => zone.classList.remove('active'));
+            const targetZone = document.getElementById(zoneId);
+            targetZone.classList.add('active');
+            
+            // Retrigger animation
+            targetZone.style.animation = 'none';
+            targetZone.offsetHeight; /* trigger reflow */
+            targetZone.style.animation = null;
+            window.scrollTo(0, 0);
+        });
+    });
+</script>

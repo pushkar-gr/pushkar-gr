@@ -1,0 +1,36 @@
+---
+const { contact } = Astro.props;
+---
+<section id="zone-contact" class="zone">
+    <div class="zone-title">
+        <span>> traceroute -m 3 global.contact</span>
+        <span style="color: var(--accent-purple)">[ROUTING]</span>
+    </div>
+    <div style="font-family: monospace; line-height: 2;">
+        traceroute to global.contact (0.0.0.0), 30 hops max, 60 byte packets<br><br>
+        
+        {contact.github_url && (
+            <p> 1  github-gw.local (git)  0.214 ms <br>
+                &nbsp;&nbsp;&nbsp;↳ <a href={contact.github_url} target="_blank" style="color: var(--accent-blue)">{contact.github_url.replace('https://', '')}</a>
+            </p><br>
+        )}
+        
+        {contact.linkedin_url && (
+            <p> 2  linkedin-peer.net (asn)  1.420 ms <br>
+                &nbsp;&nbsp;&nbsp;↳ <a href={contact.linkedin_url} target="_blank" style="color: var(--accent-blue)">{contact.linkedin_url.replace('https://', '')}</a>
+            </p><br>
+        )}
+
+        {contact.email && (
+            <p> 3  smtp-relay.inbox (mx)  12.115 ms <br>
+                &nbsp;&nbsp;&nbsp;↳ <a href={`mailto:${contact.email}`} style="color: var(--accent-green)">{contact.email}</a>
+            </p><br>
+        )}
+
+        {contact.resume_url && (
+            <p> 4  cdn.resume.pdf (blob)  24.501 ms <br>
+                &nbsp;&nbsp;&nbsp;↳ <a href={contact.resume_url} target="_blank" style="color: var(--accent-purple)">Download Resume Payload</a>
+            </p><br>
+        )}
+    </div>
+</section>

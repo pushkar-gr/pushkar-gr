@@ -1,0 +1,35 @@
+---
+const { experience } = Astro.props;
+// Get the earliest period year for the log header
+const startYear = experience.length > 0 ? experience[experience.length - 1].period.split(' - ')[0] : "System Boot";
+---
+<section id="zone-experience" class="zone">
+    <div class="zone-title">
+        <span>> journalctl -u career.service --no-pager</span>
+        <span style="color: var(--accent-blue)">[ACTIVE]</span>
+    </div>
+    <div style="font-family: monospace;">
+        -- Logs begin at {startYear}. --<br><br>
+        
+        {experience.map((exp) => (
+            <div class="log-entry">
+                <span class="log-time">[{exp.period}]</span> 
+                <span class="log-process">systemd[1]:</span> 
+                <span class="log-msg">Started <span style="color:var(--accent-green)">{exp.description}</span> daemon at <strong>{exp.name}</strong>.</span>
+            </div>
+        ))}
+        
+        <br><span class="log-time">-- No further logs. System operational. --</span>
+    </div>
+</section>
+
+<style>
+    .log-entry {
+        margin-bottom: 1.5rem;
+        font-size: 0.95rem;
+        line-height: 1.5;
+    }
+    .log-time { color: var(--text-muted); }
+    .log-process { color: var(--accent-purple); font-weight: bold; }
+    .log-msg { color: var(--text-main); }
+</style>

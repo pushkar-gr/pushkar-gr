@@ -1,0 +1,98 @@
+---
+const { projects } = Astro.props;
+---
+<section id="zone-projects" class="zone">
+    <div class="zone-title">
+        <span>> htop --filter="projects"</span>
+        <span style="color: var(--accent-blue)">[{projects.length} TASKS]</span>
+    </div>
+    
+    <div class="projects-grid">
+        {projects.map(proj => {
+            const techStr = proj.technologies.join(" ").toLowerCase();
+            let statusColor = "var(--accent-green)";
+            if (techStr.includes("rust") || techStr.includes("c++") || techStr.includes("ebpf")) {
+                statusColor = "var(--accent-purple)"; // Systems
+            } else if (techStr.includes("network") || techStr.includes("udp") || techStr.includes("tcp")) {
+                statusColor = "var(--accent-blue)"; // Network
+            }
+
+            const nameParts = proj.name.split(' - ');
+            const title = nameParts[0];
+            const subtitle = nameParts.slice(1).join(' - ');
+            const pid = Math.floor(Math.random() * 8000) + 1000;
+
+            return (
+                <div class="project-card">
+                    <div class="card-header">
+                        <span class="pid">PID: {pid}</span>
+                        <span class="status" style={`color: ${statusColor}`}>RUNNING</span>
+                    </div>
+                    <div class="card-body">
+                        <div class="card-title">{title}</div>
+                        {subtitle && <div class="card-subtitle">[ {subtitle} ]</div>}
+                        <div class="card-desc">{proj.description}</div>
+                        <a href={proj.html_url} target="_blank" class="btn-link">Target ↗</a>
+                    </div>
+                    <div class="card-footer">
+                        {proj.technologies.map(tech => <span>{tech}</span>)}
+                    </div>
+                </div>
+            );
+        })}
+    </div>
+</section>
+
+<style>
+    .projects-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+        gap: 2rem;
+        width: 100%;
+    }
+    .project-card {
+        background: var(--surface);
+        border: 1px solid var(--line-color);
+        border-radius: 6px;
+        display: flex;
+        flex-direction: column;
+        transition: all 0.2s ease;
+        overflow: hidden;
+    }
+    .project-card:hover {
+        border-color: var(--accent-blue);
+        transform: translateY(-4px);
+        box-shadow: 0 10px 20px rgba(0,0,0,0.4);
+    }
+    .card-header {
+        background: rgba(0,0,0,0.4);
+        padding: 0.8rem 1.2rem;
+        border-bottom: 1px solid var(--line-color);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-size: 0.9rem;
+    }
+    .card-header .pid { color: var(--text-muted); font-size: 0.8rem; }
+    .card-header .status { font-size: 0.8rem; }
+    .card-body { padding: 1.2rem; flex: 1; }
+    .card-title { color: var(--text-main); font-size: 1.1rem; font-weight: bold; margin-bottom: 0.8rem; }
+    .card-subtitle { color: var(--accent-blue); font-size: 0.8rem; margin-bottom: 0.8rem; }
+    .card-desc { color: var(--text-muted); font-size: 0.85rem; line-height: 1.6; }
+    
+    .card-footer {
+        padding: 1rem 1.2rem;
+        border-top: 1px dashed var(--line-color);
+        display: flex;
+        flex-wrap: wrap;
+        gap: 6px;
+        background: rgba(10, 15, 25, 0.3);
+    }
+    .card-footer span {
+        background: rgba(30, 41, 59, 0.5);
+        color: var(--accent-blue);
+        padding: 2px 8px;
+        border-radius: 4px;
+        font-size: 0.75rem;
+    }
+</style>
