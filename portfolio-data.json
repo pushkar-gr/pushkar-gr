@@ -11,7 +11,7 @@
     ],
     "bio": "I build high-performance, low-level network infrastructure and distributed systems. From writing eBPF/XDP hooks in the kernel to engineering peer-to-peer transport protocols in Rust, my focus is on absolute zero-copy efficiency and secure, scalable telemetry.",
     "contact": {
-      "email": "gr.pushkar.7@gmail.com",
+      "email": "me@pushkargr.me",
       "github_url": "https://github.com/pushkar-gr",
       "linkedin_url": "https://linkedin.com/in/gr-pushkar",
       "twitter_url": "https://x.com/g_r_pushkar",
