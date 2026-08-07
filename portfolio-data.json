@@ -20,6 +20,12 @@
   },
   "experience": [
     {
+      "name": "Akamai Technologies",
+      "description": "Software Engineer Intern",
+      "period": "June 2026 - August 2026",
+      "responsibilities": ""
+    },
+    {
       "name": "TruckHai",
       "description": "Backend Developer Intern",
       "period": "Jan 2026 - April 2026",
@@ -40,7 +46,7 @@
       "PostgreSQL", "MySQL", "Redis", "MongoDB"
     ],
     "tools": [
-      "Linux/Unix", "Git", "Vim/Neovim", "Docker", "gRPC", "Matlab", "eBPF"
+      "Linux/Unix", "Git", "Vim/Neovim", "Docker", "Kubernetes", "Envoy", "gRPC", "Matlab", "eBPF"
     ],
     "areas": [
       "Network Programming", "Distributed Systems", "System Design", "Concurrency", "Performance Optimization", "Browser Extensions", "Full Stack Development"
