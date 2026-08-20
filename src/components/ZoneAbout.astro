@@ -9,25 +9,29 @@ const uptimeYears = (diffTime / (1000 * 60 * 60 * 24 * 365.25)).toFixed(1);
 ---
 <section id="zone-about" class="zone active">
     <div class="zone-title">
-        <span>> cat src/developer.rs</span>
+        <span>&gt; cat src/developer.rs</span>
         <span style="color: var(--accent-green)">[READ ONLY]</span>
     </div>
     
     <div class="struct-block">
-        <p><span class="type-keyword">pub struct</span> <span class="type-struct">Developer</span> {</p>
+        <p><span class="type-keyword">pub struct</span> <span class="type-struct">Developer</span> &#123;</p>
         <p>&nbsp;&nbsp;&nbsp;&nbsp;<span class="type-field">instance_id</span>: <span class="type-string">"{user.instance_id}"</span>,</p>
         <p>&nbsp;&nbsp;&nbsp;&nbsp;<span class="type-field">architecture</span>: <span class="type-string">"{user.architecture}"</span>,</p>
         <p>&nbsp;&nbsp;&nbsp;&nbsp;<span class="type-field">uptime_years</span>: <span style="color: var(--accent-purple)">{uptimeYears}</span>,</p>
         <p>&nbsp;&nbsp;&nbsp;&nbsp;<span class="type-field">protocols</span>: [</p>
-        <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{user.protocols.map((p, i) => <><span class="type-string">"{p}"</span>{i !== user.protocols.length - 1 ? ", " : ""}</>)}</p>
+        <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{user.protocols.flatMap((p, i) => 
+            i < user.protocols.length - 1 
+                ? [<span class="type-string">"{p}"</span>, ", "] 
+                : [<span class="type-string">"{p}"</span>]
+        )}</p>
         <p>&nbsp;&nbsp;&nbsp;&nbsp;],</p>
-        <p>}</p>
+        <p>&#125;</p>
         <br>
-        <p><span class="type-keyword">impl</span> <span class="type-struct">Developer</span> {</p>
-        <p>&nbsp;&nbsp;&nbsp;&nbsp;<span class="type-keyword">fn</span> <span class="sys-call">describe</span>(&amp;self) -&gt; String {</p>
+        <p><span class="type-keyword">impl</span> <span class="type-struct">Developer</span> &#123;</p>
+        <p>&nbsp;&nbsp;&nbsp;&nbsp;<span class="type-keyword">fn</span> <span class="sys-call">describe</span>(&amp;self) -&gt; String &#123;</p>
         <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="type-string">"{user.bio}"</span>.to_string()</p>
-        <p>&nbsp;&nbsp;&nbsp;&nbsp;}</p>
-        <p>}</p>
+        <p>&nbsp;&nbsp;&nbsp;&nbsp;&#125;</p>
+        <p>&#125;</p>
     </div>
 </section>
 
